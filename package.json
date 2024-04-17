@@ -1,5 +1,5 @@
 {
-  "name": "vault-api",
+  "name": "vault.ist-sdk",
   "version": "1.0.0",
   "description": "",
   "main": "src/App.ts",
