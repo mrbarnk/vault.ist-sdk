@@ -1,12 +1,16 @@
 {
   "name": "vault.ist-sdk",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
-  "main": "src/App.ts",
+  "main": "lib/App.js",
   "scripts": {
     "build": "tsc",
     "dev": "nodemon src/App.ts",
-    "test": "jest --config jestconfig.json"
+    "test": "jest --config jestconfig.json",
+    "prepublishOnlys": "npm run build && npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "keywords": [],
   "author": "",
