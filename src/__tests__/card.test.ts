@@ -1,9 +1,7 @@
-import App from '../App';
-import { Auth } from '../vault/app/auth';
-import { Wallet } from '../vault/app/wallet';
+import Vault from '..';
 
 describe('Card', () => {
-    let app: App = new App();
+    let app: Vault = new Vault();
     let result: any;
     // app.auth.signIn({ password: process.env.password || '', number: process.env.phone || '', grant_type: 'mobile_phone' }).then(result => {
 
@@ -12,7 +10,7 @@ describe('Card', () => {
     })
 
     it('should set bearer token', async () => {
-        app = new App(result.access_token)
+        app = new Vault(result.access_token)
     })
 
     // it('should create account wallet', async () => {

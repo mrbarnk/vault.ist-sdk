@@ -4,7 +4,15 @@ import { Exchange } from "./vault/app/exchange";
 import { Kyc } from "./vault/app/kyc";
 import { Wallet } from "./vault/app/wallet";
 
-export default class App {
+interface IApp {
+    auth: Auth;
+    kyc: Kyc;
+    card: Card;
+    wallet: Wallet;
+    exchange: Exchange;
+  }
+
+export default class App implements IApp {
     public auth: Auth;
     public kyc: Kyc;
     public card: Card;
