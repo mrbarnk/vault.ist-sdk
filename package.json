@@ -1,6 +1,6 @@
 {
   "name": "vault.ist-sdk",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "",
   "main": "dist/index.js",
   "scripts": {

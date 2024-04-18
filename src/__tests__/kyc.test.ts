@@ -1,7 +1,7 @@
 import Vault from '..';
 
 describe('KYC', () => {
-    let app: Vault = new Vault();
+    let app: Vault = new Vault(process.env.XMerchantID || '');
     let result: any;
     // app.auth.signIn({ password: process.env.password || '', number: process.env.phone || '', grant_type: 'mobile_phone' }).then(result => {
 

@@ -7,7 +7,7 @@ describe('Auth', () => {
     let phone: string = process.env.PHONE || '';
 
     beforeEach(() => {
-        app = new Vault();
+        app = new Vault(process.env.XMerchantID || '');
         auth = app.auth;
     });
 

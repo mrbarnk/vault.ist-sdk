@@ -10,7 +10,7 @@ interface IApp {
     card: Card;
     wallet: Wallet;
     exchange: Exchange;
-  }
+}
 
 export default class App implements IApp {
     public auth: Auth;
@@ -19,11 +19,11 @@ export default class App implements IApp {
     public wallet: Wallet;
     public exchange: Exchange;
 
-    constructor(bearerToken?: string) {
-        this.auth = new Auth(bearerToken);
-        this.kyc = new Kyc(bearerToken);
-        this.card = new Card(bearerToken);
-        this.wallet = new Wallet(bearerToken);
-        this.exchange = new Exchange(bearerToken);
+    constructor(XMarchantID: string, bearerToken?: string) {
+        this.auth = new Auth(XMarchantID, bearerToken);
+        this.kyc = new Kyc(XMarchantID, bearerToken);
+        this.card = new Card(XMarchantID, bearerToken);
+        this.wallet = new Wallet(XMarchantID, bearerToken);
+        this.exchange = new Exchange(XMarchantID, bearerToken);
     }
 }
