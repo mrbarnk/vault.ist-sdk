@@ -26,7 +26,7 @@ axiosInstance.interceptors.response.use(
             const errorData = error.response.data;
             // console.log(errorData)
             // Throw a new Error with the extracted error data
-            throw new Error(JSON.stringify(errorData));
+            throw new Error(JSON.stringify(errorData?.message || errorData));
             // } else if (error.request) {
             //     // Handle request errors (e.g., network errors)
             //     console.error('Request error:', error.request);
