@@ -19,11 +19,11 @@ export default class App implements IApp {
     public wallet: Wallet;
     public exchange: Exchange;
 
-    constructor(XMarchantID: string, bearerToken?: string) {
-        this.auth = new Auth(XMarchantID, bearerToken);
-        this.kyc = new Kyc(XMarchantID, bearerToken);
-        this.card = new Card(XMarchantID, bearerToken);
-        this.wallet = new Wallet(XMarchantID, bearerToken);
-        this.exchange = new Exchange(XMarchantID, bearerToken);
+    constructor(param: { XMerchantID?: string; bearerToken?: string }) {
+        this.auth = new Auth(param);
+        this.kyc = new Kyc(param);
+        this.card = new Card(param);
+        this.wallet = new Wallet(param);
+        this.exchange = new Exchange(param);
     }
 }

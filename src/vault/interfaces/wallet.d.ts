@@ -3,6 +3,7 @@ export interface IWallet {
         id: number,
         name: string,
         address: string,
+        baseCurrency?: string;
         currency: string,
         pattern: string,
         balance: number,
@@ -39,6 +40,7 @@ export interface IWallet {
         stub: boolean,
         walletCreationState: string,
         debit: boolean
+        network?: string;
     }[]
     validateSend: {
         blockedAmount: {

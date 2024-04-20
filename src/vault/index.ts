@@ -9,7 +9,8 @@ export class ApiClient {
   instance: AxiosInstance = axiosInstance;
   bearerToken?: string;
 
-  constructor(XMerchantID: string, bearerToken?: string) {
+  constructor({ XMerchantID,
+    bearerToken }: { XMerchantID?: string; bearerToken?: string }) {
     this.instance = axiosInstance;
 
     if (bearerToken) {
