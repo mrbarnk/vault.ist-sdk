@@ -1,8 +1,10 @@
 import { Auth } from "./vault/app/auth";
 import { Card } from "./vault/app/card";
 import { Exchange } from "./vault/app/exchange";
+import { History } from "./vault/app/history";
 import { Kyc } from "./vault/app/kyc";
 import { PayIn } from "./vault/app/payin";
+import { Payout } from "./vault/app/payout";
 import { Wallet } from "./vault/app/wallet";
 
 interface IApp {
@@ -11,7 +13,9 @@ interface IApp {
     card: Card;
     wallet: Wallet;
     payin: PayIn;
+    payout: Payout;
     exchange: Exchange;
+    history: History;
 }
 
 export default class App implements IApp {
@@ -21,6 +25,8 @@ export default class App implements IApp {
     public wallet: Wallet;
     public exchange: Exchange;
     public payin: PayIn;
+    public payout: Payout;
+    history: History;
 
     constructor(param: { XMerchantID?: string; bearerToken?: string }) {
         this.auth = new Auth(param);
@@ -29,5 +35,7 @@ export default class App implements IApp {
         this.wallet = new Wallet(param);
         this.exchange = new Exchange(param);
         this.payin = new PayIn(param);
+        this.payout = new Payout(param);
+        this.history = new History(param);
     }
 }
