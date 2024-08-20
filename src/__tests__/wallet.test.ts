@@ -1,7 +1,7 @@
-import App from '../App';
+import Vault from '..';
 
 describe('Wallet', () => {
-    let app: App = new App();
+    let app: Vault = new Vault({ XMerchantID: process.env.XMerchantID });
     let result: any;
     // app.auth.signIn({ password: process.env.password || '', number: process.env.phone || '', grant_type: 'mobile_phone' }).then(result => {
 
@@ -11,7 +11,7 @@ describe('Wallet', () => {
 
     it('should set bearer token', async () => {
 
-        app = new App(result.access_token)
+        app = new Vault(result.access_token)
     })
 
     it('should create account wallet', async () => {

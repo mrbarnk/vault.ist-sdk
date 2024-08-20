@@ -9,12 +9,33 @@ export class ApiClient {
   instance: AxiosInstance = axiosInstance;
   bearerToken?: string;
 
-  constructor(bearerToken?: string) {
+  constructor({ XMerchantID,
+    bearerToken }: { XMerchantID?: string; bearerToken?: string }) {
     this.instance = axiosInstance;
 
     if (bearerToken) {
       this.setAuthToken(bearerToken)
     };
+
+    if (XMerchantID) {
+      this.setXMarchantID(XMerchantID)
+    }
+  }
+
+
+  protected setXMarchantID(XMerchantID: string) {
+    // this.bearerToken = bearerToken
+
+    // Interceptor to add Authorization header
+    this.instance.interceptors.request.use(
+      (config) => {
+        config.headers['X-Merchant-ID'] = XMerchantID;
+        return config;
+      },
+      (error) => {
+        return Promise.reject(error); // Pass through request errors
+      }
+    );
   }
 
   protected setAuthToken(bearerToken: string) {

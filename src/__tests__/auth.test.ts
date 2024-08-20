@@ -1,13 +1,13 @@
-import App from '../App';
+import Vault from '..';
 import { Auth } from '../vault/app/auth';
 
 describe('Auth', () => {
-    let app: App;
+    let app: Vault;
     let auth: Auth;
     let phone: string = process.env.PHONE || '';
 
     beforeEach(() => {
-        app = new App();
+        app = new Vault({ XMerchantID: process.env.XMerchantID });
         auth = app.auth;
     });
 
