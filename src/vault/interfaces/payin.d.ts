@@ -91,4 +91,28 @@ export interface IPayIn {
         cardCountryName: string;
         cardBankName: string;
     }
+    payCallback: {
+        offerId?: number; // Defaults to 0
+        status: string;
+        amount?: number; // Defaults to 0
+        currency: string;
+        cryptoAmount?: number; // Defaults to 0
+        cryptoCurrency: string;
+        maskedPan: string;
+        transactionStatus: string;
+        transactionStatusCode?: number; // Defaults to 0
+        originalTransactionStatus: string;
+        originalTransactionStatusCode?: number; // Defaults to 0
+        paymentMode: string;
+        transactionDate: string;
+        transactionAmount: string;
+        cardCountryCode: string;
+        cardCountryName: string;
+        cardBankName: string;
+        blockedAmount: {
+            value?: number; // Defaults to 0
+            currency: string;
+        };
+    }
+
 }
