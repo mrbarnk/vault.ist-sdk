@@ -4,6 +4,14 @@ export interface IPayIn {
         symbolCurrency: string;
         rate: number;
     }[]
+    getRatesAndCardData: {
+        currencyFrom: string;
+        currencyTo: string;
+        amountScaleFrom: number;
+        amountScaleTo: number;
+        lock: string;
+        rate: number;
+    }[]
     addCard: {
         cardNumber: number;
         cardHolder: string;
@@ -69,7 +77,6 @@ export interface IPayIn {
         offerId: number;
         fromCurrency: string;
         toCurrency: string;
-        operation: string;
         toAmount: number;
         operation: 'PAYIN'
     }

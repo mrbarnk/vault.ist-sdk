@@ -9,6 +9,11 @@ export class PayIn extends ApiClient {
     async getFiatRates(): Promise<IPayIn['getFiatRate']> {
         return this.sendRequest('GET', '/v3/payin/fiat-rates');
     }
+
+    async getRateAndCards(): Promise<IPayIn['getRatesAndCardData']> {
+        return this.sendRequest('GET', '/v3/payin/data');
+    }
+
     async addCard(data: {
         cardNumber: number;
         cardHolder: string;
