@@ -41,7 +41,7 @@ export class PayIn extends ApiClient {
     async updateOffer(data: { offerId: number; currencyFrom: string; currencyTo: string; amountFrom: number; amountTo: number }): Promise<IPayIn['updateOffer']> {
         return this.sendRequest('PUT', `/v3/payin/pay/${data.offerId}`, data);
     }
-    async activateOffer(data: { offerId: number, cardCvv?: string, successUrl?: string, fingerprint?: string }): Promise<IPayIn['executeOffer']> {
+    async activateOffer(data: { offerId: number, cardCVV?: string, successUrl?: string, fingerprint?: string }): Promise<IPayIn['executeOffer']> {
         return this.sendRequest('POST', `/v3/payin/pay/${data.offerId}`, data);
     }
     async payCallback(data: { offerId: number }): Promise<IPayIn['payCallback']> {

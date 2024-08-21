@@ -29,7 +29,7 @@ export class Payout extends ApiClient {
     async updateOffer(data: { offerId: number; currencyFrom: string; currencyTo: string; amountFrom: number; amountTo: number }): Promise<IPayOut['updateOffer']> {
         return this.sendRequest('PUT', `/v4/payout/offer/${data.offerId}`, data);
     }
-    async activateOffer(data: { offerId: number, cardCvv?: string, successUrl?: string, fingerprint?: string }): Promise<IPayOut['executeOffer']> {
+    async activateOffer(data: { offerId: number, cardCVV?: string, successUrl?: string, fingerprint?: string }): Promise<IPayOut['executeOffer']> {
         return this.sendRequest('POST', `/v4/payout/pay/${data.offerId}`, data);
     }
 }
