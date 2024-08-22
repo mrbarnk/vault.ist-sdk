@@ -16,6 +16,15 @@ export class Wallet extends ApiClient {
         return this.sendRequest('GET', '/v2/history/operations');
     }
 
+
+    async estimateFee(data: {
+        amount: number;
+        address: string;
+        currency: string;
+    }): Promise<IWallet['estimateFee']> {
+        return this.sendRequest('GET', `/v1/wallet/send/fee/${data.currency}?amount=${data.amount}&address=${data.address}`);
+    }
+
     async sendWallet(data: {
         fee: number,
         phone: string;

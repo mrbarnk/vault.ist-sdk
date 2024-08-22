@@ -44,6 +44,12 @@ export interface IWallet {
             network?: string;
         }[]
     }
+    estimateFee: {
+        fee: number;
+        sourceCurrency: string;
+        transactionType: string;
+        transactionAvailability: boolean
+    }
     validateSend: {
         blockedAmount: {
             value: number;
