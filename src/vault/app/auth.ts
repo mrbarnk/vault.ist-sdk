@@ -18,7 +18,7 @@ export class Auth extends ApiClient {
     }
 
     async addEmail(data: { email: string }): Promise<IAuth['addEmail']> {
-        return this.sendRequest('POST', '/v2/mobile/email/add', data);
+        return this.sendRequest('PUT', '/v2/mobile/email/add', data);
     }
 
     async confirmEmail(data: { email: string, event: string, token: string }): Promise<IAuth['confirmEmail']> {
