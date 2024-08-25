@@ -26,9 +26,9 @@ export default class App implements IApp {
     public exchange: Exchange;
     public payin: PayIn;
     public payout: Payout;
-    history: History;
+    public history: History;
 
-    constructor(param: { XMerchantID?: string; bearerToken?: string }) {
+    constructor(param: { XMerchantID?: string; bearerToken?: string, mode: 'test' | 'production' }) {
         this.auth = new Auth(param);
         this.kyc = new Kyc(param);
         this.card = new Card(param);

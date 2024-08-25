@@ -1,5 +1,5 @@
-import config from "../config";
-import axios, { AxiosInstance, CreateAxiosDefaults } from 'axios'
+import config, { PRODUCTION_API } from "../config";
+import axios, { AxiosInstance, AxiosRequestConfig, CreateAxiosDefaults } from 'axios'
 import { axiosInstance } from "../config/axios-config";
 
 
@@ -10,7 +10,7 @@ export class ApiClient {
   bearerToken?: string;
 
   constructor({ XMerchantID,
-    bearerToken }: { XMerchantID?: string; bearerToken?: string }) {
+    bearerToken, mode }: { XMerchantID?: string; bearerToken?: string, mode: 'test' | 'production' }) {
     this.instance = axiosInstance;
 
     if (bearerToken) {
@@ -20,6 +20,20 @@ export class ApiClient {
     if (XMerchantID) {
       this.setXMarchantID(XMerchantID)
     }
+    if (mode == 'production') {
+      this.setProductionEndpoint()
+    }
+  }
+
+  protected setProductionEndpoint() {
+    // Add a request interceptor to modify requests
+    this.instance.interceptors.request.use((config) => {
+      config.baseURL = PRODUCTION_API;
+      return config;
+    }, (error) => {
+      // Handle request error
+      return Promise.reject(error);
+    });
   }
 
 
