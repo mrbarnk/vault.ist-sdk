@@ -1,7 +1,7 @@
 import Vault from '..';
 
 describe('KYC', () => {
-    let app: Vault = new Vault({ XMerchantID: process.env.XMerchantID });
+    let app: Vault = new Vault({ XMerchantID: process.env.XMerchantID, mode: 'test' });
     let result: any;
     // app.auth.signIn({ password: process.env.password || '', number: process.env.phone || '', grant_type: 'mobile_phone' }).then(result => {
 
@@ -17,7 +17,7 @@ describe('KYC', () => {
         const response = await app.kyc.step1().start();
     });
 
-    
+
     it('KYC level 1 finish', async () => {
         const response = await app.kyc.step1().finish();
     });

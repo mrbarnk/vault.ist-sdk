@@ -1,7 +1,7 @@
 import Vault from '..';
 
 describe('Wallet', () => {
-    let app: Vault = new Vault({ XMerchantID: process.env.XMerchantID });
+    let app: Vault = new Vault({ XMerchantID: process.env.XMerchantID, mode: 'test' });
     let result: any;
     // app.auth.signIn({ password: process.env.password || '', number: process.env.phone || '', grant_type: 'mobile_phone' }).then(result => {
 
