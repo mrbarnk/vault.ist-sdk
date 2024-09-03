@@ -6,6 +6,7 @@ import { Kyc } from "./vault/app/kyc";
 import { PayIn } from "./vault/app/payin";
 import { Payout } from "./vault/app/payout";
 import { Wallet } from "./vault/app/wallet";
+import { VaultUser } from "./vault/interfaces/users";
 
 interface IApp {
     auth: Auth;
@@ -27,10 +28,12 @@ export default class App implements IApp {
     public payin: PayIn;
     public payout: Payout;
     public history: History;
+    public user: VaultUser;
 
     constructor(param: { XMerchantID?: string; bearerToken?: string, mode: 'test' | 'production' }) {
         this.auth = new Auth(param);
         this.kyc = new Kyc(param);
+        this.user = new VaultUser(param);
         this.card = new Card(param);
         this.wallet = new Wallet(param);
         this.exchange = new Exchange(param);
