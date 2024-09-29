@@ -9,8 +9,31 @@ export class Auth extends ApiClient {
         return this.sendRequest('POST', '/v2/mobile/signup', data);
     }
 
-    async verifyPhone(data: { phone: string; smsCode: string }): Promise<IAuth['signIn']> {
+    async verifyPhone(data: { phone: string; code: string }): Promise<IAuth['signIn']> {
         return this.sendRequest('POST', '/v2/mobile/phone/confirm', data);
+    }
+
+
+    async changePassword(currentPassword: string,
+        newPassword: string): Promise<{ result: string }> {
+        return this.sendRequest('put', '/v2/mobile/password/change', { currentPassword, newPassword });
+    }
+
+    async requestPasswordOTP(phone: string): Promise<{ result: string }> {
+        return this.sendRequest('POST', '/v2/mobile/password/reset', { phone });
+    }
+
+    async confirmSMSCodeForNewPassword(phone: string, code: string, password: string): Promise<{ result: string }> {
+        return this.sendRequest('POST', '/v2/mobile/password/reset/confirm/code', { phone, code });
+    }
+    async setNewPassword(phone: string, code: string, password: string): Promise<{
+        access_token: string;
+        token_type: string;
+        refresh_token: string;
+        expires_in: number;
+        scope: string;
+    }> {
+        return this.sendRequest('POST', '/v2/mobile/password/reset/confirm', { phone, code, password });
     }
 
     async resendOtp(phone: string): Promise<IAuth['resendCode']> {
