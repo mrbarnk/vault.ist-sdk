@@ -25,7 +25,7 @@ describe('Auth', () => {
     // This works, but wont work again if number has been registered
     it('should verify phone', async () => {
         try {
-            const response = await auth.verifyPhone({ phone, smsCode: "1234" });
+            const response = await auth.verifyPhone({ phone, code: "1234" });
             expect(response.token_type).toBe('bearer');
         } catch (error) {
 
