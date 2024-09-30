@@ -6,6 +6,11 @@ export class VaultUser extends ApiClient {
     async getUserProfile(): Promise<{
         customerId: number;
         email: string;
+        firstName?: string;
+        lastName?: string;
+        residenceStreet?: string;
+        residenceCity?: string;
+        residenceZipCode?: string;
         confirmedEmail: boolean;
         phone: string;
         primaryCurrency: string;

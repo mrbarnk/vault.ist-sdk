@@ -23,7 +23,7 @@ export class Auth extends ApiClient {
         return this.sendRequest('POST', '/v2/mobile/password/reset', { phone });
     }
 
-    async confirmSMSCodeForNewPassword(phone: string, code: string, password: string): Promise<{ result: string }> {
+    async confirmSMSCodeForNewPassword(phone: string, code: string): Promise<{ result: string }> {
         return this.sendRequest('POST', '/v2/mobile/password/reset/confirm/code', { phone, code });
     }
     async setNewPassword(phone: string, code: string, password: string): Promise<{
