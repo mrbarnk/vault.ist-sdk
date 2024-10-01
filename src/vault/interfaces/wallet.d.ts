@@ -68,7 +68,7 @@ export interface IWallet {
 }
 
 
-interface OperationModel {
+export interface OperationModel {
     operationId: string;
     operationDate: string; // ISO date string
     operationStatus: string;
