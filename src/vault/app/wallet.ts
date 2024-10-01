@@ -7,7 +7,7 @@ export class Wallet extends ApiClient {
         return this.sendRequest('POST', '/v2/wallets', data);
     }
 
-    async getWallet(): Promise<IWallet['createWallet']> {
+    async getWallet(): Promise<IWallet['getWallets']> {
         return this.sendRequest('GET', '/v2/wallets');
     }
 

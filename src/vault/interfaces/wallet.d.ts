@@ -44,6 +44,7 @@ export interface IWallet {
             network?: string;
         }[]
     }
+    getWallets: WalletData[]
     estimateFee: {
         fee: number;
         sourceCurrency: string;
@@ -191,3 +192,95 @@ interface GiftModel {
     giftAmount: AmountModel;
     txHash: string;
 }
+
+
+
+
+
+
+
+interface Limits {
+    PAYOUT_CRYPTO: {
+        min: number;
+        all: number;
+    };
+}
+
+interface FiatDetails {
+    customerCurrency: string;
+    amount: number;
+    change: number;
+    changePercent: number;
+    rate?: number | null;
+}
+
+interface AccountDetails {
+    beneficiary: string;
+    number: string;
+    bicCode: string;
+    beneficiaryBankName: string;
+    paymentDetails: string;
+    country: string;
+    depositFeePercent: number;
+}
+
+interface KYC {
+    status: string;
+    additionalStatus: string[];
+    rejectReason: string;
+}
+
+interface Account {
+    name: string;
+    availableBalance: number;
+    availableBalanceInDefaultCurrency: number;
+    allowOperations: string[];
+    balance: number;
+    color: string;
+    currency: string;
+    status: string;
+    scale: number;
+    details: AccountDetails;
+    kyc: KYC;
+    createdAt: Date | null;
+    iconUrl: string;
+}
+
+interface CryptoAccount {
+    id: number;
+    name: string;
+    address: string;
+    currency: string;
+    pattern: string;
+    balance: number;
+    limits: Limits;
+    balanceString: string;
+    availableBalance: number;
+    customerId: number;
+    allowOperations: string[];
+    color: string;
+    fiat: FiatDetails;
+    scale: number;
+    stub: boolean;
+    walletCreationState?: string;
+    iconUrl: string;
+    debit: boolean;
+    baseCurrency?: string;
+    network?: string;
+}
+
+interface FiatAccount {
+    customerCurrency: string;
+    amount: number;
+    change: number;
+    changePercent: number;
+    rate?: number | null;
+}
+
+interface WalletData {
+    cryptoAccounts: CryptoAccount[];
+    accounts: Account[];
+    fiat: FiatAccount;
+}
+
+type WalletArray = WalletData[];
