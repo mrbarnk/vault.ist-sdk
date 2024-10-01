@@ -113,7 +113,16 @@ interface AmountModel {
 interface ExchangeModel {
     fromCurrency: string;
     toCurrency: string;
-    exchangeRate: number;
+    debitAmount: {
+        value: string;
+        currency: string;
+    },
+    exchangeRate: {
+        sourceCurrency: string;
+        targetCurrency: string;
+        rate: number
+        multiplier: number
+    };
     fromAmount: AmountModel;
     toAmount: AmountModel;
     feeAmount: AmountModel;
@@ -134,10 +143,15 @@ interface PayinCardModel {
 }
 
 interface PayoutCardModel {
+    toCardPAN: string;
     cardNumber: string;
-    amount: AmountModel;
+    debitAmount: AmountModel;
     authorizationCode: string;
     txHash: string;
+    feeAmount: {
+        value: number;
+        currency: string;
+    },
 }
 
 interface SendToPhoneModel {
