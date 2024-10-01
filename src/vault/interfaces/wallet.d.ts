@@ -44,7 +44,7 @@ export interface IWallet {
             network?: string;
         }[]
     }
-    getWallets: WalletData[]
+    getWallets: WalletsResponse;
     estimateFee: {
         fee: number;
         sourceCurrency: string;
@@ -68,7 +68,7 @@ export interface IWallet {
 }
 
 
-export interface OperationModel {
+interface OperationModel {
     operationId: string;
     operationDate: string; // ISO date string
     operationStatus: string;
@@ -246,12 +246,11 @@ interface Account {
     iconUrl: string;
 }
 
-interface CryptoAccount {
+interface CryptoWallet {
     id: number;
     name: string;
     address: string;
     currency: string;
-    pattern: string;
     balance: number;
     limits: Limits;
     balanceString: string;
@@ -262,25 +261,13 @@ interface CryptoAccount {
     fiat: FiatDetails;
     scale: number;
     stub: boolean;
-    walletCreationState?: string;
+    walletCreationState: string;
     iconUrl: string;
     debit: boolean;
-    baseCurrency?: string;
-    network?: string;
 }
 
-interface FiatAccount {
-    customerCurrency: string;
-    amount: number;
-    change: number;
-    changePercent: number;
-    rate?: number | null;
-}
-
-interface WalletData {
-    cryptoAccounts: CryptoAccount[];
+interface WalletsResponse {
+    wallets: CryptoWallet[];
     accounts: Account[];
-    fiat: FiatAccount;
+    fiat: FiatDetails;
 }
-
-type WalletArray = WalletData[];
