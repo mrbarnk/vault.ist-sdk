@@ -1,5 +1,5 @@
 import { ApiClient } from "..";
-import { IWallet } from "../interfaces/wallet";
+import { IWallet, OperationModel } from "../interfaces/wallet";
 
 // Wallet Container
 export class Wallet extends ApiClient {
@@ -12,7 +12,7 @@ export class Wallet extends ApiClient {
     }
 
 
-    async getHistory(): Promise<any> {
+    async getHistory(): Promise<OperationModel[]> {
         return this.sendRequest('GET', '/v2/history/operations');
     }
 

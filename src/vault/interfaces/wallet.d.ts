@@ -65,3 +65,129 @@ export interface IWallet {
         sendConfirmation: boolean;
     }
 }
+
+
+export interface OperationModel {
+    operationId: string;
+    operationDate: string; // ISO date string
+    operationStatus: string;
+    sequenceId: string;
+    exchangeModel?: null | ExchangeModel;
+    receiveCryptoModel?: null | ReceiveCryptoModel;
+    payinAdvcashModel?: null | PayinAdvcashModel;
+    payinCardModel?: null | PayinCardModel;
+    payoutCardModel?: null | PayoutCardModel;
+    sendToWalletModel?: null | SendToWalletModel;
+    sendToPhoneModel?: null | SendToPhoneModel;
+    depositLockInModel?: null | DepositLockInModel;
+    depositUnlockModel?: null | DepositUnlockModel;
+    depositInterestModel?: null | DepositInterestModel;
+    launchpadClaimModel?: null | LaunchpadClaimModel;
+    cardIssueModel?: null | CardIssueModel;
+    monthlyLoyaltyRewardModel?: null | MonthlyLoyaltyRewardModel;
+    giftModel?: null | GiftModel;
+}
+
+interface SendToWalletModel {
+    fromAddress: string;
+    toAddress: string;
+    debitAmount: AmountModel;
+    creditAmount: AmountModel;
+    feeAmount: AmountModel;
+    txHash: string;
+}
+
+interface ReceiveCryptoModel {
+    toAddress: string;
+    fromAddress: string;
+    amount: AmountModel;
+    txHash: string;
+}
+
+interface AmountModel {
+    value: number;
+    currency: string;
+}
+
+interface ExchangeModel {
+    fromCurrency: string;
+    toCurrency: string;
+    exchangeRate: number;
+    fromAmount: AmountModel;
+    toAmount: AmountModel;
+    feeAmount: AmountModel;
+    txHash: string;
+}
+
+interface PayinAdvcashModel {
+    walletId: string;
+    amount: AmountModel;
+    transactionId: string;
+}
+
+interface PayinCardModel {
+    cardNumber: string;
+    amount: AmountModel;
+    authorizationCode: string;
+    txHash: string;
+}
+
+interface PayoutCardModel {
+    cardNumber: string;
+    amount: AmountModel;
+    authorizationCode: string;
+    txHash: string;
+}
+
+interface SendToPhoneModel {
+    phoneNumber: string;
+    amount: AmountModel;
+    txHash: string;
+}
+
+interface DepositLockInModel {
+    lockInAmount: AmountModel;
+    lockInPeriod: number; // in days
+    interestRate: number;
+    txHash: string;
+}
+
+interface DepositUnlockModel {
+    unlockAmount: AmountModel;
+    unlockDate: string; // ISO date string
+    txHash: string;
+}
+
+interface DepositInterestModel {
+    interestAmount: AmountModel;
+    interestDate: string; // ISO date string
+    txHash: string;
+}
+
+interface LaunchpadClaimModel {
+    projectId: string;
+    tokenAmount: AmountModel;
+    claimDate: string; // ISO date string
+    txHash: string;
+}
+
+interface CardIssueModel {
+    cardType: string;
+    issueDate: string; // ISO date string
+    cardNumber: string;
+    cardHolderName: string;
+    txHash: string;
+}
+
+interface MonthlyLoyaltyRewardModel {
+    rewardAmount: AmountModel;
+    rewardDate: string; // ISO date string
+    txHash: string;
+}
+
+interface GiftModel {
+    giftId: string;
+    recipientAddress: string;
+    giftAmount: AmountModel;
+    txHash: string;
+}
