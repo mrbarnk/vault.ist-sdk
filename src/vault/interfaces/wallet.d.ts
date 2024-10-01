@@ -250,6 +250,7 @@ interface CryptoWallet {
     id: number;
     name: string;
     address: string;
+    baseCurrency: string;
     currency: string;
     balance: number;
     limits: Limits;
