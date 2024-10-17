@@ -4,14 +4,7 @@ export interface IPayIn {
         symbolCurrency: string;
         rate: number;
     }[]
-    getRatesAndCardData: {
-        currencyFrom: string;
-        currencyTo: string;
-        amountScaleFrom: number;
-        amountScaleTo: number;
-        lock: string;
-        rate: number;
-    }[]
+    getRatesAndCardData: ResponseData;
     addCard: {
         cardNumber: number;
         cardHolder: string;
@@ -122,4 +115,65 @@ export interface IPayIn {
         };
     }
 
+}
+
+
+
+interface Card {
+    maskedPan: string;
+    cardId: number;
+    cardType: string;
+    minAmountFrom: number;
+    maxAmountFrom: number;
+    validationStatus: string;
+    billingAddressRequired: boolean;
+}
+
+interface Pair {
+    rate: number;
+    currencyFrom: string;
+    currencyTo: string;
+    amountScaleFrom: number;
+    amountScaleTo: number;
+    lock: boolean;
+}
+
+interface FirstPurchaseLimit {
+    value: number;
+    currency: string;
+}
+
+interface FreeTransactionsPromo {
+    available: number;
+    total: number;
+}
+
+interface Fees {
+    currency: string;
+    scale: number;
+    rate: number;
+    partnerFee: number;
+    crypteriumGas: number;
+    additionalFee: number;
+    transactionFee: number;
+    insuranceFee: number | null;
+    feeTableEnabled: boolean;
+    fixFee: number;
+}
+
+interface ResponseData {
+    cards: Card[];
+    validTo: string;
+    validSeconds: number;
+    pairs: Pair[];
+    fiatPairs: any[]; // Assuming fiatPairs is an empty array for now, can be typed accordingly if it has a structure
+    feeInfo: any | null;
+    feeTable: any | null;
+    defaultMinAmountFrom: number;
+    defaultMaxAmountFrom: number;
+    firstPurchaseLimit: FirstPurchaseLimit;
+    freeTransactionsPromo: FreeTransactionsPromo;
+    fees: Fees;
+    billingAddressRequired: boolean;
+    firstPurchase: boolean;
 }

@@ -26,6 +26,7 @@ export class Auth extends ApiClient {
     async confirmSMSCodeForNewPassword(phone: string, code: string): Promise<{ result: string }> {
         return this.sendRequest('POST', '/v2/mobile/password/reset/confirm/code', { phone, code });
     }
+    
     async setNewPassword(phone: string, code: string, password: string): Promise<{
         access_token: string;
         token_type: string;

@@ -42,7 +42,19 @@ export class PayIn extends ApiClient {
         return this.sendRequest('PUT', `/v3/payin/pay/${data.offerId}`, data);
     }
     async activateOffer(data: { offerId: number, cardCVV?: string, successUrl?: string, fingerprint?: string }): Promise<IPayIn['executeOffer']> {
-        return this.sendRequest('POST', `/v3/payin/pay/${data.offerId}`, data);
+        return this.sendRequest('POST', `/v3/payin/pay/${data.offerId}`, {
+            ...data,
+            fingerprint: {
+                acceptContent: "text/html,application/xhtml+x0.8",
+                browserLanguage: "en-us",
+                browserColorDepth: 32,
+                browserJavaEnabled: false,
+                browserScreenWidth: 428,
+                browserAcceptHeader: "text/html,applicat+xm=0.8",
+                browserScreenHeight: 884,
+                browserJavascriptEnabled: true
+            }
+        });
     }
     async payCallback(data: { offerId: number }): Promise<IPayIn['payCallback']> {
         return this.sendRequest('GET', `/v3/payin/pay-callback?offerId=${data.offerId}`, data);

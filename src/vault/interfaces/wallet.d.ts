@@ -137,7 +137,7 @@ interface PayinAdvcashModel {
 
 interface PayinCardModel {
     cardNumber: string;
-    amount: AmountModel;
+    creditAmount: AmountModel;
     authorizationCode: string;
     txHash: string;
 }
